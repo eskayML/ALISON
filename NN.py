@@ -25,13 +25,7 @@ class Model(nn.Module):
         self.num_classes = num_classes
         self.stack = nn.Sequential(
             nn.Dropout(p = self.dp),
-            nn.Linear(in_size, self.width),
-            self.act,
-            nn.Dropout(p = self.dp),
-            nn.Linear(in_size, self.width),
-            self.act,
-            nn.Dropout(p = self.dp),
-            nn.Linear(in_size, self.width),
+            nn.Linear(self.width, self.width),
             self.act,
             nn.Dropout(p = self.dp),
             nn.Linear(self.width, self.width),
