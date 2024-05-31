@@ -1,3 +1,4 @@
+from datetime import datetime 
 from Utils import *
 from NN import *
 
@@ -11,8 +12,8 @@ def main():
     parser.add_argument('--train', '-T', help = 'Path to Training Data', default='../Data/train.txt')
     parser.add_argument('--authors_total', '-at', help='Number of Total Authors in Corpus', default = 10)
 
-    parser.add_argument('--trial_name', 'tm', help='The Current Trial\'s Name (e.g. Dataset Name)')
-    parser.add_argument('--test_size', 'ts', help = 'Proportion of data to use for testing', default=0.15)
+    parser.add_argument('--trial_name', '-tm', help='The Current Trial\'s Name (e.g. Dataset Name)')
+    parser.add_argument('--test_size', '-ts', help = 'Proportion of data to use for testing', default=0.15)
 
     parser.add_argument('--top_ngrams', '-tng', help='t, The Number of top Character and POS-ngrams to Retain', default = 256)
     parser.add_argument('--V', '-V', help='V, the set of n-gram lengths to use', default = [1, 2, 3, 4])
@@ -34,7 +35,7 @@ def main():
 
     os.makedirs(save_path)
 
-    with open(parser.train, 'r') as reader:
+    with open(args.train, 'r') as reader:
         lines = [line.partition(' ') for line in reader.readlines()]
         labels = [int(line[0]) for line in lines]
         texts = [line[2] for line in lines]
