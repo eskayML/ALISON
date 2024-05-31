@@ -81,9 +81,7 @@ def main():
     X = []
     y = []
 
-    print (X[0])
 
-    print(y[:5])
     
     processed = 0
     for index, row in data.iterrows():
@@ -97,7 +95,9 @@ def main():
 
     X = np.array(X)
     y = np.array(y)
+    print (X[0])
 
+    print(y[:5])
     X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=args.test_size, random_state=1, stratify=y)
 
     print('------------', '\n', 'Scaling, Loading, and Shuffling Data')
