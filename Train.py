@@ -43,7 +43,7 @@ def main():
         data = pd.DataFrame(data = {'label' : labels, 'text' : texts})
 
     print('------------', '\n', 'Tagging...')
-    data['POS'] = tag(data['text'])
+    data['POS_text'] = tag(data['text'])
 
     print('------------', '\n', 'Counting and aggregating texts...')
     number_texts = [0 for idx in range(args.authors_total)]
