@@ -9,7 +9,7 @@ def main():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--train', '-T', help = 'Path to Training Data', default='../Data/train.txt')
+    parser.add_argument('--train', '-T', help = 'Path to Training Data', default='Data/blog.txt')
     parser.add_argument('--authors_total', '-at', help='Number of Total Authors in Corpus', default = 10)
 
     parser.add_argument('--trial_name', '-tm', help='The Current Trial\'s Name (e.g. Dataset Name)')
