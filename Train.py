@@ -1,9 +1,9 @@
-from datetime import datetime 
+from datetime import datetime as dt
 from Utils import *
 from NN import *
 
 def main():
-    now = datetime.now()
+    now = dt.now()
 
     gc.collect()
 
