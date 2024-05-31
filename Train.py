@@ -95,9 +95,7 @@ def main():
 
     X = np.array(X)
     y = np.array(y)
-    print (X[0])
-
-    print(y[:5])
+    
     X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=args.test_size, random_state=1, stratify=y)
 
     print('------------', '\n', 'Scaling, Loading, and Shuffling Data')
@@ -110,7 +108,7 @@ def main():
 
     training_set = torch.utils.data.DataLoader(training_Loader, batch_size = args.batch_size, shuffle = True)
     validation_set = torch.utils.data.DataLoader(validation_Loader, batch_size = args.batch_size, shuffle = False)
-
+    print(training_set)
     pickle.dump(X_train, open(os.path.join(save_path, 'X_train.pkl'), 'wb'))
     pickle.dump(y_train, open(os.path.join(save_path, 'y_train.pkl'), 'wb'))
     pickle.dump(X_test, open(os.path.join(save_path, 'X_test.pkl'), 'wb'))
