@@ -43,6 +43,7 @@ def main():
         data = pd.DataFrame(data = {'label' : labels, 'text' : texts})
 
     print('------------', '\n', 'Tagging...')
+    data = data.iloc[:100] # experiment
     data['POS_text'] = tag(data['text'])
     print(data.head())
 
