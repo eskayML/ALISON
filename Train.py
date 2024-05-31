@@ -80,6 +80,11 @@ def main():
     print('------------', '\n', 'Generating data...')
     X = []
     y = []
+
+    print (X[0])
+
+    print(y[:5])
+    
     processed = 0
     for index, row in data.iterrows():
         if(processed % 1000 == 0):
