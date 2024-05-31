@@ -44,6 +44,7 @@ def main():
 
     print('------------', '\n', 'Tagging...')
     data['POS_text'] = tag(data['text'])
+    print(data.head())
 
     print('------------', '\n', 'Counting and aggregating texts...')
     number_texts = [0 for idx in range(args.authors_total)]
@@ -84,14 +85,14 @@ def main():
             print(f'{processed} texts processed')
 
         y.append(int(row['label']))
-        X.append(ngram_rep(row['text'], row['POS_text'], args.V, n_grams, args.V, pos_n_grams, args.V, word_n_grams))
+        X.append(ngram_rep(row['text'], row['POS_text'], data.columns.tolist()))
 
         processed += 1
 
     X = np.array(X)
     y = np.array(y)
 
-    X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=args.test_size, random_state=1, shuffle=False, stratify=y)
+    X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=args.test_size, random_state=1, stratify=y)
 
     print('------------', '\n', 'Scaling, Loading, and Shuffling Data')
     Scaler = sklearn.preprocessing.StandardScaler().fit(X_train)

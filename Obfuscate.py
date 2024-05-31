@@ -1,6 +1,7 @@
 from Utils import *
 from Replacer import *
 from NN import *
+from datetime import datetime as dt
 
 def clean(texts):
     ret = []
@@ -24,7 +25,7 @@ def clean(texts):
 
 
 def main():
-    now = datetime.now()
+    now = dt.now()
 
     parser = argparse.ArgumentParser()
 
