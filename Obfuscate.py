@@ -32,7 +32,7 @@ def main():
     parser.add_argument('--texts', '-t', help = 'Path to texts for obfuscation')
     parser.add_argument('--authors_total', '-at', help='Number of Total Authors in Corpus', default = 10)
     parser.add_argument('--dir', '-f', help = 'Path to the directory containing the trained model')
-    parser.add_argument('--trial_name', 'tm', help='The Current Trial\'s Name (e.g. Dataset Name)', default='')
+    parser.add_argument('--trial_name', '-tm', help='The Current Trial\'s Name (e.g. Dataset Name)', default='')
 
     parser.add_argument('--L', '-L', help='L, the number of top POS n-grams to mask', default = 15)
     parser.add_argument('--c', '-c', help='c, the length scaling constant', default = 1.35)
@@ -57,7 +57,7 @@ def main():
                                     })
 
     features = np.array(pickle.load(open(os.path.join(args.dir, 'features.pkl'), "rb")))
-    Scaler= np.array(pickle.load(open(os.path.join(args.dir, 'Scaler.pkl'), "rb")))
+    Scaler = np.array(pickle.load(open(os.path.join(args.dir, 'Scaler.pkl'), "rb")))
     num_char = features[0].size
     num_pos = features[1].size
     features = features.flatten().tolist()
@@ -75,7 +75,7 @@ def main():
 
     ig = IntegratedGradients(model)
 
-    all = []
+    all_data = []
     torch.cuda.empty_cache()
     for data, label in ig_set:
 
@@ -88,7 +88,7 @@ def main():
         torch.cuda.empty_cache()
         del attributions
 
-    data['attribution'] = all
+    data['attribution'] = all_data
 
     isValid = lambda index : index >= index >= num_char and index < num_char + num_pos
     to_compressed = lambda tag: tags[tag] if tag in tags else tag
