@@ -80,7 +80,7 @@ def main():
     X = []
     y = []
     processed = 0
-    for index, row in data.iterrows():
+    for index, row in data[:100].iterrows(): 
         if(processed % 1000 == 0):
             print(f'{processed} texts processed')
 
