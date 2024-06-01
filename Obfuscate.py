@@ -43,9 +43,9 @@ def main():
     args = parser.parse_args()
 
     current_dir = os.getcwd()
+    
     save_path = 'Trained Models'
 
-    os.makedirs(save_path, exist_ok=True)
 
     print('------------', '\n', 'Loading Data...')
     with open(args.dir + args.trial_name, 'r', encoding="latin-1") as reader:
@@ -55,8 +55,8 @@ def main():
                                     'label' : [int(line[0]) for line in lines]
                                     })
 
-    features = np.array(pickle.load(open(os.path.join(args.dir, 'features.pkl'), "rb")))
-    Scaler = np.array(pickle.load(open(os.path.join(args.dir, 'Scaler.pkl'), "rb")))
+    features = np.array(pickle.load(open(os.path.join(save_path, 'features.pkl'), "rb")))
+    Scaler = np.array(pickle.load(open(os.path.join(save_path, 'Scaler.pkl'), "rb")))
     num_char = features[0].size
     num_pos = features[1].size
     features = features.flatten().tolist()
@@ -68,8 +68,8 @@ def main():
 
     ig_set = torch.utils.data.DataLoader(Loader(ngram_reps, data['label']), batch_size=1, shuffle=False)
 
-    model = Model(len(os.path.join(args.dir, 'X_test.pkl')[0]), args.authors_total)
-    model.load_state_dict(torch.load(os.path.join(args.dir, 'model.pt')))
+    model = Model(len(os.path.join(save_path, 'X_test.pkl')[0]), args.authors_total)
+    model.load_state_dict(torch.load(os.path.join(save_path, 'model.pt')))
     model.eval()
 
     ig = IntegratedGradients(model)
