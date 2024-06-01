@@ -29,9 +29,9 @@ def main():
     args = parser.parse_args()
 
     dir = os.getcwd()
-    timestamp = now.strftime("%m.%d.%H.%M.%S")
-    trial_name = f'{args.trial_name}_{timestamp}'
-    save_path = os.path.join(dir, 'Trained_Models', trial_name)
+
+    trial_name = f'{args.trial_name}'
+    save_path = 'Trained Models'
 
     os.makedirs(save_path)
 
@@ -43,7 +43,7 @@ def main():
         data = pd.DataFrame(data = {'label' : labels, 'text' : texts})
 
     print('------------', '\n', 'Tagging...')
-    #data = data.iloc[:100] # experiment
+
     data['POS_text'] = tag(data['text'])
     print(data.head())
 

@@ -43,8 +43,7 @@ def main():
     args = parser.parse_args()
 
     dir = os.getcwd()
-    timestamp = now.strftime("%m.%d.%H.%M.%S")
-    save_path = os.path.join(dir, 'Trained_Models', f'{args.trial_name}_{timestamp}')
+    save_path = 'Trained_Models'
 
     os.makedirs(save_path)
 
