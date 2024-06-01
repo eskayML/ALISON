@@ -30,8 +30,7 @@ def main():
 
     dir = os.getcwd()
 
-    trial_name = f'{args.trial_name}'
-    save_path = 'Trained Models'
+    save_path = os.path.join(dir, 'Trained Models')
 
     os.makedirs(save_path, exist_ok=True)
 
@@ -43,7 +42,7 @@ def main():
         data = pd.DataFrame(data = {'label' : labels, 'text' : texts})
 
     print('------------', '\n', 'Tagging...')
-
+    #data = data.iloc[:100] # experiment
     data['POS_text'] = tag(data['text'])
     print(data.head())
 
@@ -84,7 +83,7 @@ def main():
 
     
     processed = 0
-    for index, row in data[:100].iterrows(): 
+    for index, row in data.iterrows():
         if(processed % 1000 == 0):
             print(f'{processed} texts processed')
 

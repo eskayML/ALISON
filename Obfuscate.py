@@ -31,8 +31,8 @@ def main():
 
     parser.add_argument('--texts', '-t', help = 'Path to texts for obfuscation')
     parser.add_argument('--authors_total', '-at', help='Number of Total Authors in Corpus', default = 10)
-    parser.add_argument('--dir', '-f', help = 'Path to the directory containing the trained model' , default="Data/")
-    parser.add_argument('--trial_name', '-tm', help='The Current Trial\'s Name (e.g. Dataset Name)', default='blog.txt')
+    parser.add_argument('--dir', '-f', help = 'Path to the directory containing the trained model' , default="Trained Models")
+    parser.add_argument('--trial_name', '-tm', help='The Current Trial\'s Name (e.g. Dataset Name)', default='Data/blog.txt')
 
     parser.add_argument('--L', '-L', help='L, the number of top POS n-grams to mask', default = 15)
     parser.add_argument('--c', '-c', help='c, the length scaling constant', default = 1.35)
@@ -48,7 +48,7 @@ def main():
 
 
     print('------------', '\n', 'Loading Data...')
-    with open(args.dir + args.trial_name, 'r', encoding="latin-1") as reader:
+    with open(args.trial_name, 'r', encoding="latin-1") as reader:
         lines = [line.partition(' ') for line in reader.readlines()]
         data = pd.DataFrame(data = {
                                     'text' : [line[2] for line in lines],
