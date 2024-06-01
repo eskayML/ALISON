@@ -20,6 +20,7 @@ class Model(nn.Module):
         super(Model, self).__init__()
 
         self.act = nn.ReLU()
+        self.in_size = in_size
         self.dp = 0.40
         self.width = 256
         self.num_classes = num_classes
