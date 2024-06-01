@@ -45,7 +45,7 @@ def main():
     current_dir = os.getcwd()
     save_path = 'Trained Models'
 
-    os.makedirs(save_path)
+    os.makedirs(save_path, exist_ok=True)
 
     print('------------', '\n', 'Loading Data...')
     with open(args.dir + args.trial_name, 'r', encoding="latin-1") as reader:

@@ -33,7 +33,7 @@ def main():
     trial_name = f'{args.trial_name}'
     save_path = 'Trained Models'
 
-    os.makedirs(save_path)
+    os.makedirs(save_path, exist_ok=True)
 
     with open(args.train, 'r', encoding="latin-1") as reader:
         lines = [line.partition(' ') for line in reader.readlines()]
