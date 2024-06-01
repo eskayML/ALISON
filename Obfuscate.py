@@ -42,8 +42,8 @@ def main():
 
     args = parser.parse_args()
 
-    dir = os.getcwd()
-    save_path = 'Trained_Models'
+    current_dir = os.getcwd()
+    save_path = 'Trained Models'
 
     os.makedirs(save_path)
 
