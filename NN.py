@@ -20,15 +20,13 @@ class Model(nn.Module):
         super(Model, self).__init__()
 
         self.act = nn.ReLU()
+        self.in_size = in_size
         self.dp = 0.40
         self.width = 256
         self.num_classes = num_classes
         self.stack = nn.Sequential(
             nn.Dropout(p = self.dp),
-            nn.Linear(self.width, self.width),
-            self.act,
-            nn.Dropout(p = self.dp),
-            nn.Linear(self.width, self.width),
+            nn.Linear(self.in_size, self.width),
             self.act,
             nn.Dropout(p = self.dp),
             nn.Linear(self.width, self.width),
