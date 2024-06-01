@@ -108,7 +108,7 @@ def main():
 
     training_set = torch.utils.data.DataLoader(training_Loader, batch_size = args.batch_size, shuffle = True)
     validation_set = torch.utils.data.DataLoader(validation_Loader, batch_size = args.batch_size, shuffle = False)
-    print(training_set[0], training_set[1])
+    
     pickle.dump(X_train, open(os.path.join(save_path, 'X_train.pkl'), 'wb'))
     pickle.dump(y_train, open(os.path.join(save_path, 'y_train.pkl'), 'wb'))
     pickle.dump(X_test, open(os.path.join(save_path, 'X_test.pkl'), 'wb'))
