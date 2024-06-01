@@ -49,7 +49,7 @@ def main():
     os.makedirs(save_path)
 
     print('------------', '\n', 'Loading Data...')
-    with open(args.dir + args.trial_name, 'r') as reader:
+    with open(args.dir + args.trial_name, 'r', encoding="latin-1") as reader:
         lines = [line.partition(' ') for line in reader.readlines()]
         data = pd.DataFrame(data = {
                                     'text' : [line[2] for line in lines],
