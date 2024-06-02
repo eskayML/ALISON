@@ -42,7 +42,7 @@ def main():
         data = pd.DataFrame(data = {'label' : labels, 'text' : texts})
 
     print('------------', '\n', 'Tagging...')
-    #data = data.iloc[:100] # experiment
+    # data = data.iloc[:100] # experiment
     data['POS_text'] = tag(data['text'])
     print(data.head())
 
@@ -94,6 +94,8 @@ def main():
 
     X = np.array(X)
     y = np.array(y)
+
+    
     
     X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=args.test_size, random_state=1, stratify=y)
 
@@ -101,6 +103,10 @@ def main():
     Scaler = sklearn.preprocessing.StandardScaler().fit(X_train)
     X_train = Scaler.transform(X_train)
     X_test = Scaler.transform(X_test)
+
+    print(n_grams)
+    print(pos_n_grams)
+    print(word_n_grams)
 
     training_Loader = Loader(X_train, y_train)
     validation_Loader = Loader(X_test, y_test)

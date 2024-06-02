@@ -55,11 +55,12 @@ def main():
                                     'label' : [int(line[0]) for line in lines]
                                     })
 
-    features = np.array(pickle.load(open(os.path.join(save_path, 'features.pkl'), "rb")))
-    Scaler = np.array(pickle.load(open(os.path.join(save_path, 'Scaler.pkl'), "rb")))
-    num_char = features[0].size
-    num_pos = features[1].size
-    features = features.flatten().tolist()
+    features = pickle.load(open(os.path.join(save_path, 'features.pkl'), "rb"))
+    Scaler = pickle.load(open(os.path.join(save_path, 'Scaler.pkl'), "rb"))
+
+    num_char = len(features[0])
+    num_pos = len(features[1])
+    # features = features.flatten().tolist()
 
     ngram_reps = []
     for idx, row in data.iterrows():
