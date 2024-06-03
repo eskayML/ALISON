@@ -121,6 +121,7 @@ def main():
 
     features = [n_grams, pos_n_grams, word_n_grams]
     pickle.dump(features, open(os.path.join(save_path, 'features.pkl'), 'wb'))
+    pickle.dump(Scaler, open(os.path.join(save_path, 'Scaler.pkl'), 'wb'))
 
     model = Model(len(X_train[0]), args.authors_total)
     
